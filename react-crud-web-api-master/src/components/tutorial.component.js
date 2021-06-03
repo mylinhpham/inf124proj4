@@ -6,7 +6,6 @@ export default class Tutorial extends Component {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeBrand = this.onChangeBrand.bind(this);
     this.getTutorial = this.getTutorial.bind(this);
     this.updatePublished = this.updatePublished.bind(this);
     this.updateTutorial = this.updateTutorial.bind(this);
@@ -17,7 +16,6 @@ export default class Tutorial extends Component {
         id: null,
         title: "",
         description: "",
-        brand: "",
         published: false
       },
       message: ""
@@ -52,17 +50,6 @@ export default class Tutorial extends Component {
     }));
   }
 
-  onChangeBrand(e) {
-    const brand = e.target.value;
-
-    this.setState(prevState => ({
-      currentTutorial: {
-        ...prevState.currentTutorial,
-        brand: brand
-      }
-    }));
-  }
-
   getTutorial(id) {
     TutorialDataService.get(id)
       .then(response => {
@@ -81,7 +68,6 @@ export default class Tutorial extends Component {
       id: this.state.currentTutorial.id,
       title: this.state.currentTutorial.title,
       description: this.state.currentTutorial.description,
-      brand: this.state.currentTutorial.brand,
       published: status
     };
 
@@ -154,17 +140,6 @@ export default class Tutorial extends Component {
                   id="description"
                   value={currentTutorial.description}
                   onChange={this.onChangeDescription}
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="brand">Brand</label>
-                <input
-                    type="text"
-                    className="form-control"
-                    id="brand"
-                    value={currentTutorial.brand}
-                    onChange={this.onChangeBrand}
                 />
               </div>
 

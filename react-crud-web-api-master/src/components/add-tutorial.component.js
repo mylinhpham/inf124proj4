@@ -8,13 +8,11 @@ export default class AddTutorial extends Component {
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.saveTutorial = this.saveTutorial.bind(this);
     this.newTutorial = this.newTutorial.bind(this);
-    this.onChangeBrand = this.onChangeBrand.bind(this);
 
     this.state = {
       id: null,
       title: "",
       description: "",
-      brand: "",
       published: false,
 
       submitted: false
@@ -33,17 +31,10 @@ export default class AddTutorial extends Component {
     });
   }
 
-  onChangeBrand(e) {
-    this.setState({
-      brand: e.target.value
-    });
-  }
-
   saveTutorial() {
     var data = {
       title: this.state.title,
-      description: this.state.description,
-      brand: this.state.brand
+      description: this.state.description
     };
 
     TutorialDataService.create(data)
@@ -52,7 +43,6 @@ export default class AddTutorial extends Component {
           id: response.data.id,
           title: response.data.title,
           description: response.data.description,
-          brand: response.data.brand,
           published: response.data.published,
 
           submitted: true
@@ -69,7 +59,6 @@ export default class AddTutorial extends Component {
       id: null,
       title: "",
       description: "",
-      brand: "",
       published: false,
 
       submitted: false
@@ -111,19 +100,6 @@ export default class AddTutorial extends Component {
                 value={this.state.description}
                 onChange={this.onChangeDescription}
                 name="description"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="brand">Brand</label>
-              <input
-                  type="text"
-                  className="form-control"
-                  id="brand"
-                  required
-                  value={this.state.brand}
-                  onChange={this.onChangeBrand}
-                  name="brand"
               />
             </div>
 

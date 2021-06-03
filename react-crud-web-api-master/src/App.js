@@ -12,6 +12,7 @@ class App extends Component {
   render() {
     return (
       <div>
+          <div style={{background: "grey", border :'2px solid black'}}>
           <div class="homePageImg">
               <img src={coolKicks}/>
           </div>
@@ -40,6 +41,7 @@ class App extends Component {
             <Route path="/tutorials/:id" component={Tutorial} />
           </Switch>
         </div>
+      </div>
       </div>
     );
   }
